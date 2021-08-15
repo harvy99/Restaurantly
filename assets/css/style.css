@@ -563,8 +563,8 @@ h6 {
     margin-top: 30px;
 }
 
-#hero .btn-menu,
-#hero .btn-book {
+.btn-menu,
+.btn-book {
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.5px;
@@ -578,13 +578,13 @@ h6 {
     border: 2px solid #cda45e;
 }
 
-#hero .btn-menu:hover,
-#hero .btn-book:hover {
+.btn-menu:hover,
+.btn-book:hover {
     background: #cda45e;
     color: #fff;
 }
 
-#hero .btn-book {
+.btn-book {
     margin-left: 15px;
 }
 
@@ -970,6 +970,51 @@ section {
 # Menu Section
 --------------------------------------------------------------*/
 
+.container2 {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    /* margin: auto; */
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.container-header {
+    position: relative;
+    left: +15px;
+    width: 100%;
+    padding-left: 80px;
+    padding-right: 80px;
+    z-index: 5;
+}
+
+.justify-content-center .left-arrow {
+    position: absolute;
+    top: 25px;
+    height: 100%;
+    left: -15px;
+    cursor: pointer;
+}
+
+.justify-content-center .right-arrow {
+    position: absolute;
+    top: 25px;
+    height: 100%;
+    right: -15px;
+    cursor: pointer;
+}
+
+.justify-content-center .content-x {
+    color: blue;
+    font-size: 20px;
+}
+
+.content-x .active {
+    box-shadow: 0px -8px 7px -8px rgba(0, 69, 255, 1);
+    -webkit-box-shadow: 0px -8px 7px -8px rgba(0, 69, 255, 1);
+    -moz-box-shadow: 0px -8px 7px -8px rgba(0, 69, 255, 1);
+}
+
 .menu #menu-flters {
     padding: 0;
     margin: 0 auto 0 auto;
@@ -1005,6 +1050,39 @@ section {
     margin-top: 50px;
 }
 
+.menu-item .label-new {
+    display: none;
+}
+
+.menu .menu-item:hover {
+    box-shadow: 2px 20px 38px -26px rgba(0, 0, 0, 0.68);
+    -webkit-box-shadow: 2px 20px 38px -26px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 2px 20px 38px -26px rgba(0, 0, 0, 0.68);
+}
+
+.menu-item:hover .label-default {
+    display: none;
+}
+
+.menu-item:hover .label-new {
+    display: inline !important;
+}
+
+.menu .menu-item:focus {
+    box-shadow: 2px 20px 38px -26px rgba(0, 0, 0, 0.68);
+    -webkit-box-shadow: 2px 20px 38px -26px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 2px 20px 38px -26px rgba(0, 0, 0, 0.68);
+}
+
+.menu-item .badge {
+    position: absolute;
+    top: -10px;
+    left: 65px;
+    border-radius: 50%;
+    background-color: #cda45e;
+    color: white;
+}
+
 .menu .menu-img {
     width: 70px;
     border-radius: 50%;
@@ -1018,6 +1096,56 @@ section {
     display: flex;
     justify-content: space-between;
     position: relative;
+}
+
+.modal-pricing {
+    margin-top: 5px;
+    color: #cda45e;
+    font-weight: 600;
+}
+
+.modal-desc {
+    margin-top: 25px;
+    font-style: italic;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.modal-header {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+}
+
+.modal-body .input-group {
+    margin-top: 5px;
+}
+
+.modal-body .btn-number {
+    border-radius: 0px !important;
+}
+
+.modal-body {
+    background-color: #1a1814;
+    color: rgb(255, 255, 255);
+}
+
+.modal-footer {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+}
+
+.modal-header .modal-close {
+    color: #cda45e !important;
+    font-size: 50px;
+    opacity: 1;
+}
+
+.modal-body .modal-image {
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    border-radius: 12px;
 }
 
 .menu .menu-content::after {
@@ -1217,6 +1345,12 @@ section {
     .myAccount .nav-link {
         border: 0;
         padding: 15px;
+    }
+    .hide-mobile {
+        display: none !important;
+    }
+    .left-side-menu {
+        border-bottom: #cda45e solid;
     }
 }
 

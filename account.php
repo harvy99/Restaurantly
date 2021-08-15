@@ -56,7 +56,7 @@
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-3">
+          <div class="col-lg-3 left-side-menu" >
             <ul class="nav nav-tabs flex-column">
               <li class="nav-item">
                 <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">My Profile</a>
@@ -81,7 +81,7 @@
                         </div>  
                     <div class="row">
                       <div class="col-lg-4  div-group"> 
-                            <ul class="list-group">
+                            <ul class="list-group hide-mobile">
                                     <li class="list-group-item border-bottom">
                                         <p class="left-p">Name</p>
                                         <p class="right-p"></p>
@@ -137,7 +137,7 @@
                         </div>  
                     <div class="row">
                     <div class="col-lg-4  div-group"> 
-                            <ul class="list-group">
+                            <ul class="list-group hide-mobile">
                                     <li class="list-group-item border-bottom">
                                         <p class="left-p">uusername99</p>
                                         <p class="right-p"></p>
@@ -168,7 +168,7 @@
                         </div>  
                     <div class="row">
                       <div class="col-lg-4  div-group"> 
-                            <ul class="list-group">
+                            <ul class="list-group hide-mobile">
                                     <li class="list-group-item border-bottom">
                                         <p class="left-p">Address1</p>
                                         <p class="right-p"></p>

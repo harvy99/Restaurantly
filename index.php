@@ -17,6 +17,9 @@
   <link href="assets/fontawesome/css/all.css" rel="stylesheet"> <!--load all styles -->
 
 
+  <link href="assets/css/perfect-scrollbar.css" rel="stylesheet">
+  <script src="assets/dist/perfect-scrollbar.js"></script>
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -130,24 +133,45 @@
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="menu-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-starters">Starters</li>
-              <li data-filter=".filter-salads">Salads</li>
-              <li data-filter=".filter-specialty">Specialty</li>
-            </ul>
+            <a  href="#a" class="left-arrow">  <span class="fas fa-angle-left"> </span> </a> 
+			
+            <div class="container2"> 
+			  	    <div class="content-x"> 
+                <ul id="menu-flters">
+                  <li data-filter="*" class="filter-active">All</li>
+                  <li data-filter=".filter-starters">Starters</li>
+                  <li data-filter=".filter-salads">Salads</li>
+                  <li data-filter=".filter-specialty">Specialty</li>
+                  <li data-filter=".filter-desserts">Desserts</li>
+                  <li data-filter=".filter-desserts">Desserts</li>
+                  <li data-filter=".filter-desserts">Desserts</li>
+                  <li data-filter=".filter-desserts">Desserts</li>
+                  <li data-filter=".filter-desserts">Desserts</li>
+                  <li data-filter=".filter-desserts">Desserts</li>
+                  <li data-filter=".filter-desserts">Desserts</li>
+                  <li data-filter=".filter-desserts">Desserts</li>
+                  <li data-filter=".filter-desserts">Desserts</li>
+                  <li data-filter=".filter-desserts">Desserts</li>
+                  <li data-filter=".filter-desserts">Desserts</li>
+                  <li data-filter=".filter-desserts">Desserts</li>
+                </ul> 
+              </div> 
+            </div>   
+            <a   href="#r"class="right-arrow">  <span class="fas fa-angle-right"> </a>
           </div>
         </div>
 
         <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
 
-          <div class="col-lg-6 menu-item filter-starters">
-            <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
+          <div class="col-lg-6 menu-item filter-starters" data-bs-toggle="modal" data-bs-target="#modal-menu" data-bs-whatever="@add"> 
+              <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt=""> 
+						  <span class="badge">3</span> 
             <div class="menu-content">
-              <a href="#">Lobster Bisque</a><span>$5.95</span>
+              <a href="#menu-option">Lobster Bisque</a><span>$5.95</span>
             </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
+            <div class="menu-ingredients"> 
+              <p class="label-default">Lorem, deren, trataro, filede, nerada</p>
+              <p class="label-new">Click to add to cart!</p>
             </div>
           </div>
 
@@ -161,7 +185,7 @@
             </div>
           </div>
 
-          <div class="col-lg-6 menu-item filter-starters">
+          <div class="col-lg-6 menu-item filter-desserts">
             <img src="assets/img/menu/cake.jpg" class="menu-img" alt="">
             <div class="menu-content">
               <a href="#">Crab Cake</a><span>$7.95</span>
@@ -235,6 +259,74 @@
 
       </div>
     </section><!-- End Menu Section -->
+
+        
+    <!-- Modal For Menu-->     
+    <div class="modal fade" id="modal-menu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" style="color: #000;">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+            <a type="button" class="modal-close" data-bs-dismiss="modal" aria-label="Close"> <i class="fas fa-times-circle"></i></a>
+
+          </div>
+          <div class="modal-body"> 
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                <div class="thumbnail">
+                  <img class="modal-image rounded mx-auto d-block img-fluid"src="assets/img/menu/bread-barrel.jpg" alt="Food">
+                <div class="caption">
+                <h3 style="margin-top: 20px">Beef Grilled</h3>
+                  <div class="input-group">
+                      <select class="form-select" id="country" >
+                      <option value="">Small</option>
+                      <option>Medium </option>
+                      <option>Large </option> 
+                    </select>
+                  </div>
+               
+                 
+                  <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                      <div class="modal-desc">
+                       <span> Far far away, behind the word mountains.</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                      <div class="modal-pricing">
+                        $12.99
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                      <div class="input-group">
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-menu btn-number"  data-type="minus" data-field="quant[2]">
+                            <i class="fas fa-minus"></i>
+                          </button>
+                        </span>
+                        <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100">
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-menu btn-number " data-type="plus" data-field="quant[2]">
+                            <i class="fas fa-plus"></i>
+                          </button>
+                        </span>
+                      </div>
+                    </div> 
+                  </div>      
+                </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-menu btn-book">Add to cart</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- end of modal  -->
 
     <!-- ======= Specials Section ======= -->
     <section id="specials" class="specials">
@@ -825,9 +917,66 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
+  
+  <script type="text/javascript" src="assets/vendor/jquery/jquery-3.6.0.min.js"></script> 
+
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script> 
+    var exampleModal = document.getElementById('modal-menu')
+  exampleModal.addEventListener('show.bs.modal', function (event) {
+    // Button that triggered the modal
+    var button = event.relatedTarget
+    // Extract info from data-bs-* attributes
+    var recipient = button.getAttribute('data-bs-whatever')
+    // If necessary, you could initiate an AJAX request here
+    // and then do the updating in a callback.
+    //
+    // Update the modal's content.
+    var modalTitle = exampleModal.querySelector('.modal-title')
+    var modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+    modalTitle.textContent = 'New message to ' + recipient
+    modalBodyInput.value = recipient
+  });
+
+  var containers = document.querySelectorAll('.container2');
+
+		new PerfectScrollbar(containers[0], {
+		useBothWheelAxes: true
+		});
+
+    
+			$('.left-arrow').hide(); 
+      
+		$('.left-arrow').on('click', function() {
+			$('.container2').scrollLeft($('.container2').scrollLeft()-1000) ;
+		});
+		$('.right-arrow').on('click', function() {
+			$('.container2').scrollLeft($('.container2').scrollLeft()+1000) ;
+		});
+		$('.container2').on('scroll', function() {
+		
+			// console.log($(this).scrollLeft() + $(this).innerWidth()); 
+			// console.log($(this)[0].scrollWidth); 
+        if($(this).scrollLeft() + $(this).innerWidth() >= $(this)[0].scrollWidth -1)  { 
+			// alert("reached end");
+			$('.right-arrow').hide();
+        }else{
+			$('.right-arrow').show();
+		}
+
+		if($(this).scrollLeft()==0 )  { 
+			// alert("reached end");
+			$('.left-arrow').hide();
+        }else{
+			$('.left-arrow').show();
+		}
+
+    });
+ 
+  </script>
 </body>
 
 </html>
