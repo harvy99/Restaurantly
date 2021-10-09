@@ -925,7 +925,7 @@
 
   <script> 
     var exampleModal = document.getElementById('modal-menu')
-  exampleModal.addEventListener('show.bs.modal', function (event) {
+  exampleModal.addEventListener('show.bs.modal', function (event) { 
     // Button that triggered the modal
     var button = event.relatedTarget
     // Extract info from data-bs-* attributes
