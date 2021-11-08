@@ -91,3 +91,65 @@ RICE
 --Adobo Rice
 --Fried Rice
 --Yong Chow Rice
+
+POSITIVITEA
+
+CLASSIC
+-16oz = PHP 65
+-22oz = PHP 75
+--Taro
+--Hokkaido
+--Caramel Sugar
+--Cookies & Cream
+--Wintermelon
+--Chocolate
+--Redvelvet
+--Dark Choco
+--Cheesecake
+
+CHEESECAKE
+-16oz = PHP 80
+-22oz = PHP 90
+--Creamy Cheesecake
+--Redvelvet Cheesecake
+--Taro Cheesecake
+--Matcha Cheesecake
+--Cookies & Cream Cheesecake
+--Okinawa Cheesecake
+--Hokkaido Cheesecake
+--Caramer Sugar Cheesecake
+--Wintermelon Cheesecake
+--Creamy Mango
+
+FRAPPETEA
+-16oz = PHP 85
+-22oz = PHP 95
+--Dark Choco
+--Cookies & Cream
+--Taro
+--Matcha
+--Chocolate
+--Redvelvet
+--Wintermelon
+--Okinawa
+--Hokkaido
+
+SIGNATURE FLAVOR
+-16oz = PHP 95
+-22oz = PHP 110
+--Oreo Choco Matcha
+-16oz = PHP 100
+-22oz = PHP 115
+--Graham Oreo Velvet
+-16oz = PHP 95
+-22oz = PHP 110
+--Mango Cheesecake Graham
+
+ADD-ONS
+-PHP 10
+--Tropical Pearl
+--Nata De Coco
+--Graham Powder
+--Oreo Crushed
+--Cream Cheese/Puff
+--Chocolate Chips
