@@ -316,6 +316,7 @@ $('.input-number').focusin(function() {
 });
 $('.input-number').change(function() {
 
+
     minValue = parseInt($(this).attr('min'));
     maxValue = parseInt($(this).attr('max'));
     valueCurrent = parseInt($(this).val());
@@ -336,6 +337,14 @@ $('.input-number').change(function() {
         $(this).val(maxValue);
     }
 
+    var index = 0;
+    for (var x = 0; x < $count; x++) {
+
+        if ($product_id[x] == $('#select_variant').find(":selected").val()) {
+            index = x;
+        }
+    }
+    $('#product_price').html('₱' + (valueCurrent * $product_price[index]))
 
 });
 $(".input-number").keydown(function(e) {

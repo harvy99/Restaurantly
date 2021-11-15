@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+  include('includes/dbcon.php');
 
+?>
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -125,9 +128,18 @@
     <!-- ======= Menu Section ======= -->
     <section id="menu" class="menu section-bg">
       <div class="container" data-aos="fade-up">
+          <?php
 
+              $sql="SELECT * FROM `corners`   ";
+              $query=mysqli_query($con,$sql)or 
+              die(print("SQL Error"));
+              while($row=mysqli_fetch_array($query)){ 
+                $corner_id = $row['id'];
+
+          ?>
+      <br>
         <div class="section-title">
-          <h2>Menu</h2>
+          <h2><?php echo $row['name'] ?></h2>
           <p>Check Our Tasty Menu</p>
         </div>
 
@@ -139,21 +151,17 @@
 			  	    <div class="content-x"> 
                 <ul id="menu-flters">
                   <li data-filter="*" class="filter-active">All</li>
-                  <li data-filter=".filter-starters">Starters</li>
-                  <li data-filter=".filter-salads">Salads</li>
-                  <li data-filter=".filter-specialty">Specialty</li>
-                  <li data-filter=".filter-desserts">Desserts</li>
-                  <li data-filter=".filter-desserts">Desserts</li>
-                  <li data-filter=".filter-desserts">Desserts</li>
-                  <li data-filter=".filter-desserts">Desserts</li>
-                  <li data-filter=".filter-desserts">Desserts</li>
-                  <li data-filter=".filter-desserts">Desserts</li>
-                  <li data-filter=".filter-desserts">Desserts</li>
-                  <li data-filter=".filter-desserts">Desserts</li>
-                  <li data-filter=".filter-desserts">Desserts</li>
-                  <li data-filter=".filter-desserts">Desserts</li>
-                  <li data-filter=".filter-desserts">Desserts</li>
-                  <li data-filter=".filter-desserts">Desserts</li>
+                  <?php
+                  
+                    $sql2="SELECT * FROM `product_category`  
+                    where corners_id = $corner_id ";
+                    $query_category=mysqli_query($con,$sql2)or 
+                    die(print("SQL Error"));
+                    while($row_category=mysqli_fetch_array($query_category)){ 
+                      // $corner_id = $row_category['id'];
+                  ?>
+                  <li data-filter=".filter-<?php echo $row_category['name']?>"><?php echo $row_category['name'] ?></li>
+                   <?php } ?>
                 </ul> 
               </div> 
             </div>   
@@ -163,100 +171,35 @@
 
         <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
 
-          <div class="col-lg-6 menu-item filter-starters" data-bs-toggle="modal" data-bs-target="#modal-menu" data-bs-whatever="@add"> 
+            <?php 
+              $sql2="
+              SELECT p.id as product_id, p.name as product_name, c.name as category_name FROM `products` p 
+              INNER JOIN product_category c on p.product_category_id = c.id
+              INNER JOIN corners s on c.corners_id = s.id
+              where s.id = $corner_id
+              ";
+              $query_products=mysqli_query($con,$sql2)or 
+              die(print("SQL Error"));
+              while($row_products=mysqli_fetch_array($query_products)){  
+            ?>
+          <div class="col-lg-6 menu-item filter-<?php echo $row_products['category_name']?>" data-bs-toggle="modal" data-bs-target="#modal-menu" data-bs-id="<?php echo $row_products['product_id']?>" data-bs-name="<?php echo $row_products['product_name']?>"> 
               <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt=""> 
 						  <span class="badge">3</span> 
             <div class="menu-content">
-              <a href="#menu-option">Lobster Bisque</a><span>$5.95</span>
+              <a href="#menu-option"><?php echo $row_products['product_name']?></a><span>$5.95</span>
             </div>
             <div class="menu-ingredients"> 
               <p class="label-default">Lorem, deren, trataro, filede, nerada</p>
               <p class="label-new">Click to add to cart!</p>
             </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-specialty">
-            <img src="assets/img/menu/bread-barrel.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Bread Barrel</a><span>$6.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-desserts">
-            <img src="assets/img/menu/cake.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Crab Cake</a><span>$7.95</span>
-            </div>
-            <div class="menu-ingredients">
-              A delicate crab cake served on a toasted roll with lettuce and tartar sauce
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-salads">
-            <img src="assets/img/menu/caesar.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Caesar Selections</a><span>$8.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-specialty">
-            <img src="assets/img/menu/tuscan-grilled.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Tuscan Grilled</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-starters">
-            <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Mozzarella Stick</a><span>$4.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-salads">
-            <img src="assets/img/menu/greek-salad.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Greek Salad</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Fresh spinach, crisp romaine, tomatoes, and Greek olives
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-salads">
-            <img src="assets/img/menu/spinach-salad.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Spinach Salad</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-specialty">
-            <img src="assets/img/menu/lobster-roll.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Lobster Roll</a><span>$12.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-            </div>
-          </div>
+          </div> 
+          <?php }?>
 
         </div>
 
+        <?php 
+        }
+        ?>
       </div>
     </section><!-- End Menu Section -->
 
@@ -278,10 +221,8 @@
                 <div class="caption">
                 <h3 style="margin-top: 20px">Beef Grilled</h3>
                   <div class="input-group">
-                      <select class="form-select" id="country" >
-                      <option value="">Small</option>
-                      <option>Medium </option>
-                      <option>Large </option> 
+                      <select class="form-select" id="select_variant" >
+                      <option value="">Small</option> 
                     </select>
                   </div>
                
@@ -293,8 +234,8 @@
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
-                      <div class="modal-pricing">
-                        $12.99
+                      <div class="modal-pricing" id="product_price">
+                        ₱0
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
@@ -915,68 +856,14 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script> 
   
   <script type="text/javascript" src="assets/vendor/jquery/jquery-3.6.0.min.js"></script> 
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
-  <script> 
-    var exampleModal = document.getElementById('modal-menu')
-  exampleModal.addEventListener('show.bs.modal', function (event) { 
-    // Button that triggered the modal
-    var button = event.relatedTarget
-    // Extract info from data-bs-* attributes
-    var recipient = button.getAttribute('data-bs-whatever')
-    // If necessary, you could initiate an AJAX request here
-    // and then do the updating in a callback.
-    //
-    // Update the modal's content.
-    var modalTitle = exampleModal.querySelector('.modal-title')
-    var modalBodyInput = exampleModal.querySelector('.modal-body input')
-
-    modalTitle.textContent = 'New message to ' + recipient
-    modalBodyInput.value = recipient
-  });
-
-  var containers = document.querySelectorAll('.container2');
-
-		new PerfectScrollbar(containers[0], {
-		useBothWheelAxes: true
-		});
-
-    
-			$('.left-arrow').hide(); 
-      
-		$('.left-arrow').on('click', function() {
-			$('.container2').scrollLeft($('.container2').scrollLeft()-1000) ;
-		});
-		$('.right-arrow').on('click', function() {
-			$('.container2').scrollLeft($('.container2').scrollLeft()+1000) ;
-		});
-		$('.container2').on('scroll', function() {
-		
-			// console.log($(this).scrollLeft() + $(this).innerWidth()); 
-			// console.log($(this)[0].scrollWidth); 
-        if($(this).scrollLeft() + $(this).innerWidth() >= $(this)[0].scrollWidth -1)  { 
-			// alert("reached end");
-			$('.right-arrow').hide();
-        }else{
-			$('.right-arrow').show();
-		}
-
-		if($(this).scrollLeft()==0 )  { 
-			// alert("reached end");
-			$('.left-arrow').hide();
-        }else{
-			$('.left-arrow').show();
-		}
-
-    });
+  <script src="assets/js/indexjs.js"></script>
  
-  </script>
 </body>
 
 </html>
