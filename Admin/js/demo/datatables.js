@@ -3,12 +3,16 @@ $(document).ready(function() {
   
 
  $datatable= $('#dataTable').DataTable( {
-  dom: 'lBfrtip',
-  lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+  dom: 'lfrtipB',
+  "columnDefs": [
+    { "width": "5%", "targets": 0 },
+    { "width": "5%", "targets": 1 }
+  ],
+  lengthMenu: [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
   buttons: [   
        { 
-        extend:'print',
-        text: 'Print',
+        extend:'excel',
+        text: 'excel',
         className: 'datatable1-hidden datatable1-excel'
         },   
         { 
@@ -33,5 +37,22 @@ $('.selector-checkbox').change(function() {
   }
   
   $('.selector-checkbox')
+  
+  var arrSelected = [] 
+  var all = $(".selector-checked").map(function() {
+     
+      var id = $(this).attr('id'); 
+      id = id.replace(/\D/g,'');
+      return id;
+  }).get();
+  
+  arrSelected = all.join();
+  if(arrSelected.length > 0){ 
+    $('#edit-btn').prop('disabled', false);
+    $('#delete-btn').prop('disabled', false); 
+  }else{ 
+    $('#edit-btn').prop('disabled', true);
+    $('#delete-btn').prop('disabled', true); 
+  }
 
 });

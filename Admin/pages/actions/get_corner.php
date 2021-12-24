@@ -32,7 +32,7 @@
                                         <tr>
                                             <td>
                                                 <span class="text-primary"> <i type="button" class="fa fa-edit" data-toggle="modal" data-target="#editModal" data-id="<?php echo $id?>" data-name="<?php echo $name?>"></i> </span>
-                                                <span class="text-danger"> <i type="button" class="fa fa-trash" data-toggle="modal" data-target="#exampleModal" data-id="<?php echo $id?>" data-name="<?php echo $name?>"></i> </span>
+                                                <span class="text-danger"> <i type="button" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal" data-id="<?php echo $id?>" data-name="<?php echo $name?>" ></i> </span>
                                                 <input type="checkbox" id="selector-<?php echo $id?>" class="selector-checkbox selector-uncheck">
                                             </td>
                                             <td><?php echo $count?></td>

@@ -62,17 +62,41 @@
                                 </span> 
                                 <span class="text">Add</span>
                             </a>  
-                            <a  type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#">
+                            <button id="edit-btn"  type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#" disabled>
                                 <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span> 
                                 <span class="text">Edit</span>
-                            </a>
-                            <a  type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#deleteModal">
+                            </button>
+                            <button id="delete-btn" type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#deleteModalAll" disabled>
                                 <span class="icon text-white-50">
                                     <i class="fas fa-trash"></i>
                                 </span> 
                                 <span class="text">Delete</span>
+                            </button>
+                            <a  id="check-btn" type="button" class="btn btn-secondary btn-icon-split" >
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-check"></i>
+                                </span> 
+                                <span class="text">Check All</span>
+                            </a>
+                            <a  id="export-btn" type="button" class="btn btn-dark btn-icon-split" >
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-file-export"></i>
+                                </span> 
+                                <span class="text">Export</span>
+                            </a>
+                            <a   type="button" class="btn btn-light btn-icon-split" data-toggle="modal" data-target="#importModal">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-file-import"></i>
+                                </span> 
+                                <span class="text">Import</span>
+                            </a>
+                            <a  id="print-btn" type="button" class="btn btn-info btn-icon-split" >
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-print"></i>
+                                </span> 
+                                <span class="text">Print</span>
                             </a>
                         </div> 
                         <div class="card-body">
@@ -124,7 +148,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form action="actions/add_corner.php" method="POST" id="addRecordForm">
+                <form   method="POST" id="addRecordForm">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Corner Type:</label>
@@ -132,8 +156,8 @@
                         </div> 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="addNew()">Add</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal" onClick="addNew()">Add</button>
                     </div>
                     
                 </form>
@@ -146,9 +170,9 @@
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="actions/update_corner.php" method="POST" id="editRecordForm" >
+        <form   method="POST" id="editRecordForm" >
         <div class="modal-body">
             <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Corner Type:</label>
@@ -159,7 +183,7 @@
         <input type="hidden" id="edit-corner-id" name="id">
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary" data-dismiss="modal" onClick="editRecord()" >Apply Changes</button>
         </div>
         
@@ -168,9 +192,61 @@
     </div>
     </div>
     
+    
+    <!-- DELETE MODAL -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are sure?</h5>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form   method="POST" id="deleteRecordForm" >
+        <div class="modal-body">
+            Once the selected items are deleted, it cant be recover.
+        </div> 
+        <input type="hidden" id="delete-corner-id" name="id">
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal" onClick="deleteRecord()" >Delete</button>
+        </div>
+        
+        </form>
+        </div>
+    </div>
+    </div>
+
+    <!-- Import MODAL -->
+    <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are sure?</h5>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form   method="POST" id="importRecordForm" enctype="multipart/form-data">
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Upload Excel file here(.csv only)</label>
+                <input type="file" name="file"/>
+                <p>Follow the column arrangement from the table<p> 
+            </div> 
+        </div> 
+        <input type="hidden" id="delete-corner-id" name="id">
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal" onClick="importRecord()" >Import</button>
+        </div>
+        
+        </form>
+        </div>
+    </div>
+    </div>
 
     <!-- Delete Modal Confirmation-->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="deleteModalAll" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -213,8 +289,18 @@
             
             $( "#dataTable" ).load( "actions/get_corner.php" );
  
-        }); 
-        
+        });  
+        $( "#export-btn" ).on( "click", function() { 
+            $( ".datatable1-excel" ).trigger( "click" );
+        });
+        $( "#print-btn" ).on( "click", function() { 
+            $( ".datatable1-print" ).trigger( "click" );
+        });
+        $( "#check-btn" ).on( "click", function() { 
+            $( ".selector-checkbox" ).trigger( "click" );
+        });
+         
+
         $('#editModal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal 
                 var name = button.data('name') 
@@ -227,32 +313,18 @@
                 modal.find('#edit-name').val(name)
                 })
         
+        $('#deleteModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal 
+                var name = button.data('name') 
+                var id = button.data('id') 
+                
+                
+                var modal = $(this)
+                modal.find('.modal-title').text('Delete ' + name)
+                modal.find('#delete-corner-id').val(id) 
+                })
         
-        function editRecord(){
-
-            var myForm = document.getElementById('editRecordForm');
-            var formData = new FormData(myForm);
-            $.ajax({
-                url: "actions/update_corner.php",
-                method: "POST",
-                enctype: "multipart/form-data",
-                data: formData, 
-                processData: false,
-                contentType: false, 
-                 success: function(data) {
-                    $( "#dataTable" ).empty() 
-                    $datatable.destroy();
-                    $( "#dataTable" ).load( "actions/get_corner.php" );
-                 },
-                 error: function(request, error) {
-                     
-                    console.log(request)
-                    console.log(error)
-                    alert("Something went wrong");
-                 }
-            });
-        }
-
+// ADD RECORD -------------------------------------
         function addNew(){
 
             var myForm = document.getElementById('addRecordForm');
@@ -278,7 +350,58 @@
             });
         }
 
+    // EDIT RECORD----------------------     
+        function editRecord(){
 
+            var myForm = document.getElementById('editRecordForm');
+            var formData = new FormData(myForm);
+            $.ajax({
+                url: "actions/update_corner.php",
+                method: "POST",
+                enctype: "multipart/form-data",
+                data: formData, 
+                processData: false,
+                contentType: false, 
+                 success: function(data) {
+                    $( "#dataTable" ).empty() 
+                    $datatable.destroy();
+                    $( "#dataTable" ).load( "actions/get_corner.php" );
+                 },
+                 error: function(request, error) {
+                     
+                    console.log(request)
+                    console.log(error)
+                    alert("Something went wrong");
+                 }
+            });
+        }
+        
+        // DELETE RECORD ------------------------------------------
+        function deleteRecord(){
+
+            var myForm = document.getElementById('deleteRecordForm');
+            var formData = new FormData(myForm);
+            $.ajax({
+                url: "actions/delete_corner.php",
+                method: "POST",
+                enctype: "multipart/form-data",
+                data: formData, 
+                processData: false,
+                contentType: false, 
+                 success: function(data) {
+                    $( "#dataTable" ).empty() 
+                    $datatable.destroy();
+                    $( "#dataTable" ).load( "actions/get_corner.php" );
+                 },
+                 error: function(request, error) {
+                     
+                    console.log(request)
+                    console.log(error)
+                    alert("Something went wrong");
+                 }
+            });
+        }
+        // DELETE ALL RECORD------------------------------------------
         function deleteAll(){
             var arrSelected = [] 
             var all = $(".selector-checked").map(function() {
@@ -309,10 +432,34 @@
                         alert("Something went wrong");
                         console.log(err)
                     }
-          		 });
-                   
+          		 }); 
+        }
+        
+// IMPORT RECORD --------------------------------------
+        function importRecord(){
 
-
+            var myForm = document.getElementById('importRecordForm');
+            var formData = new FormData(myForm);
+            $.ajax({
+                url: "actions/import_corner.php",
+                method: "POST",
+                enctype: "multipart/form-data",
+                data: formData, 
+                processData: false,
+                contentType: false, 
+                 success: function(data) {
+                    $( "#dataTable" ).empty() 
+                    $datatable.destroy();
+                    $( "#dataTable" ).load( "actions/get_corner.php" );
+                    console.log(data)
+                 },
+                 error: function(request, error) {
+                     
+                    console.log(request)
+                    console.log(error)
+                    alert("Something went wrong");
+                 }
+            });
         }
          
          
