@@ -6,7 +6,8 @@ $(document).ready(function() {
   dom: 'lfrtipB',
   "columnDefs": [
     { "width": "5%", "targets": 0 },
-    { "width": "5%", "targets": 1 }
+    { "width": "5%", "targets": 1 },
+    { "width": "5%", "targets": 2 },
   ],
   lengthMenu: [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
   buttons: [   

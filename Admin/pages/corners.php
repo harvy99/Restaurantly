@@ -62,7 +62,7 @@
                                 </span> 
                                 <span class="text">Add</span>
                             </a>  
-                            <button id="edit-btn"  type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#" disabled>
+                            <button id="edit-btn"  type="button" class="btn btn-primary btn-icon-split" onClick='editAll()' disabled>
                                 <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span> 
@@ -265,6 +265,10 @@
         </div>
     </div>
 
+    <form id="formEditAll" method="POST" action ="edit_page_corner.php" enctype="multipart/form-data"> 
+        
+    </form>
+
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -287,7 +291,13 @@
     <script>
         $( document ).ready(function() {  
             
-            $( "#dataTable" ).load( "actions/get_corner.php" );
+            $load_page = "actions/corners/get_corner.php" ;
+            $add_data = "actions/corners/add_corner.php" ;
+            $delete_data = "actions/corners/delete_corner.php" ;
+            $import_data = "actions/corners/import_corner.php" ; 
+            $update_data = "actions/corners/update_corner.php" ;
+
+            $( "#dataTable" ).load( $load_page);
  
         });  
         $( "#export-btn" ).on( "click", function() { 
@@ -330,7 +340,7 @@
             var myForm = document.getElementById('addRecordForm');
             var formData = new FormData(myForm);
             $.ajax({
-                url: "actions/add_corner.php",
+                url: $add_data,
                 method: "POST",
                 enctype: "multipart/form-data",
                 data: formData, 
@@ -339,7 +349,7 @@
                  success: function(data) {
                     $( "#dataTable" ).empty() 
                     $datatable.destroy();
-                    $( "#dataTable" ).load( "actions/get_corner.php" );
+                    $( "#dataTable" ).load( $load_page );
                  },
                  error: function(request, error) {
                      
@@ -356,7 +366,7 @@
             var myForm = document.getElementById('editRecordForm');
             var formData = new FormData(myForm);
             $.ajax({
-                url: "actions/update_corner.php",
+                url: $update_data,
                 method: "POST",
                 enctype: "multipart/form-data",
                 data: formData, 
@@ -365,7 +375,7 @@
                  success: function(data) {
                     $( "#dataTable" ).empty() 
                     $datatable.destroy();
-                    $( "#dataTable" ).load( "actions/get_corner.php" );
+                    $( "#dataTable" ).load( $load_page );
                  },
                  error: function(request, error) {
                      
@@ -375,6 +385,29 @@
                  }
             });
         }
+         // EDIT ALL RECORD------------------------------------------
+         function editAll(){
+            var arrSelected = [] 
+            var all = $(".selector-checked").map(function() {
+               
+                var id = $(this).attr('id'); 
+                id = id.replace(/\D/g,'');
+                return id;
+            }).get();
+            
+            arrSelected = all.join();
+
+            var data = {
+                selected: arrSelected 
+            }; 
+ 
+            $("<input />").attr("type", "hidden")
+                                  .attr("name", "ids")
+                                  .attr("value", JSON.stringify(data) )
+                                  .appendTo("#formEditAll"); 
+                        document.getElementById("formEditAll").submit();
+        }
+        
         
         // DELETE RECORD ------------------------------------------
         function deleteRecord(){
@@ -382,7 +415,7 @@
             var myForm = document.getElementById('deleteRecordForm');
             var formData = new FormData(myForm);
             $.ajax({
-                url: "actions/delete_corner.php",
+                url: $delete_data,
                 method: "POST",
                 enctype: "multipart/form-data",
                 data: formData, 
@@ -391,7 +424,7 @@
                  success: function(data) {
                     $( "#dataTable" ).empty() 
                     $datatable.destroy();
-                    $( "#dataTable" ).load( "actions/get_corner.php" );
+                    $( "#dataTable" ).load($load_page );
                  },
                  error: function(request, error) {
                      
@@ -418,7 +451,7 @@
             }; 
  
             $.ajax({
-                    url:"actions/delete_corner.php",
+                    url: $delete_data,
                     method:"POST",
                     data:JSON.stringify(data) ,
                     success: function(data) {
@@ -426,7 +459,7 @@
                         // console.log(data)
                         $( "#dataTable" ).empty() 
                         $datatable.destroy();
-                        $( "#dataTable" ).load( "actions/get_corner.php" );
+                        $( "#dataTable" ).load( $load_page );
                     },
                     error: function(err) { 
                         alert("Something went wrong");
@@ -441,7 +474,7 @@
             var myForm = document.getElementById('importRecordForm');
             var formData = new FormData(myForm);
             $.ajax({
-                url: "actions/import_corner.php",
+                url: $import_data,
                 method: "POST",
                 enctype: "multipart/form-data",
                 data: formData, 
@@ -450,7 +483,7 @@
                  success: function(data) {
                     $( "#dataTable" ).empty() 
                     $datatable.destroy();
-                    $( "#dataTable" ).load( "actions/get_corner.php" );
+                    $( "#dataTable" ).load( $load_page );
                     console.log(data)
                  },
                  error: function(request, error) {

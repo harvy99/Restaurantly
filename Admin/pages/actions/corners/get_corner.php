@@ -1,10 +1,11 @@
                                     <?php                    
-                                        include('../../includes/dbcon.php');
+                                        include('../../../../includes/dbcon.php');
                                     ?>
                                     <thead>
                                         <tr>
                                             <th>Actions</th> 
                                             <th>#</th>
+                                            <th>ID</th>
                                             <th>Corner Type</th> 
                                         </tr>
                                     </thead>
@@ -12,6 +13,7 @@
                                         <tr>
                                             <th>actions</th> 
                                             <th>#</th>
+                                            <th>ID</th>
                                             <th>Corner Type</th> 
                                         </tr>
                                     </tfoot>
@@ -36,6 +38,7 @@
                                                 <input type="checkbox" id="selector-<?php echo $id?>" class="selector-checkbox selector-uncheck">
                                             </td>
                                             <td><?php echo $count?></td>
+                                            <td><?php echo $id?></td>
                                             <td><?php echo $name?></td>  
                                         </tr> 
                                         <?php $count++;}?>

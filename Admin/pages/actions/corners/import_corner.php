@@ -1,7 +1,7 @@
 
 <?php 
 
-include('../../includes/dbcon.php');
+include('../../../includes/dbcon.php');
 
 $str= '';
  $file = $_FILES["file"]["tmp_name"];

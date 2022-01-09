@@ -2,7 +2,7 @@
 
 // header('Content-Type: application/json'); 
 
-include('../../includes/dbcon.php');
+include('../../../includes/dbcon.php');
 
 if(isset($_POST['id'])){
 
