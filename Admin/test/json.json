@@ -1,0 +1,44 @@
+{
+    "employees":[
+        {"firstName":"John", "lastName":"Doe"},
+        {"firstName":"Anna", "lastName":"Smith"},
+        {"firstName":"Peter", "lastName":"Jones"}
+      ],
+    "arrays":[
+        {
+            "name": "id",
+            "property": {
+                "dataType": "int",
+                "editable": false  
+            } 
+        },
+        {
+            "name": "name",
+            "property": {
+                "dataType": "varchar",
+                "editable": true  
+            } 
+        },
+        {
+            "name": "date",
+            "property": {
+                "dataType": "date",
+                "editable": true  
+            } 
+        },
+        {
+            "name": "time",
+            "property": {
+                "dataType": "time",
+                "editable": true  
+            } 
+        },
+        {
+            "name": "value",
+            "property": {
+                "dataType": "float",
+                "editable": true  
+            } 
+        }
+    ]
+}

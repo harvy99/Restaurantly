@@ -1,0 +1,56 @@
+{ 
+    "fields":[
+        {
+            "name": "id",
+            "label": "ID",
+            "property": {
+                "dataType": "int",
+                "addable": false,
+                "editable": false,
+                "visible": true  
+            } 
+        },
+        {
+            "name": "admin_type",
+            "label": "Admin Type",
+            "property": {
+                "dataType": "varchar",
+                "addable": true,
+                "editable": true,
+                "visible": true  
+            } 
+        } ,
+        {
+            "name": "dummy1",
+            "label": "Dummy Number",
+            "property": {
+                "dataType": "float",
+                "addable": true,
+                "editable": true,
+                "visible": false  
+            } 
+        } ,
+        {
+            "name": "dummy2",
+            "label": "Dummy Date",
+            "property": {
+                "dataType": "date",
+                "addable": true,
+                "editable": true,
+                "visible": true  
+            } 
+        } ,
+        {
+            "name": "dummy3",
+            "label": "Dummy Time",
+            "property": {
+                "dataType": "time",
+                "addable": true,
+                "editable": true,
+                "visible": true  
+            } 
+        } 
+    ],
+    "displayFieldForDelete":"admin_type",
+    "getQuery":"SELECT * FROM `admin_type`"
+}

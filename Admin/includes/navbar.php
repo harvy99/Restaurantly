@@ -1,6 +1,21 @@
  
 
 <?php include('dbcon.php')?>
+
+<!-- ADMIN TYPE VALIDATION -->
+<?php
+// function to get webpage title
+function getTitle($url) {
+    $page = file_get_contents($url);
+    $title = preg_match('/<title[^>]*>(.*?)<\/title>/ims', $page, $match) ? $match[1] : null;
+    return $title;
+}
+// get web page title
+// echo getTitle(basename($_SERVER['PHP_SELF'])); ;
+// console.log(basename($_SERVER['PHP_SELF']));
+echo("<script type='text/javascript'> console.log('".basename($_SERVER['PHP_SELF'])."');</script>");
+?>
+
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -27,13 +42,23 @@
 <div class="sidebar-heading">
     Admin Area
 </div>
-
-<!-- Nav Item - Tables -->
+ 
+<!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
-    <a class="nav-link" href="tables.html">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin"
+        aria-expanded="true" aria-controls="collapseAdmin">
         <i class="fas fa-fw fa-user-cog"></i>
-        <span>Admin Accounts</span></a>
-</li> 
+        <span>Admin Management</span>
+    </a>
+    <div id="collapseAdmin" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Admin Management:</h6>
+            <a class="collapse-item" href="admin_account.php">Admin Accounts</a>
+            <a class="collapse-item" href="admin_type.php">Admin Type</a>
+            <a class="collapse-item" href="#">Admin Privileges</a> 
+        </div>
+    </div>
+</li>
 <!-- Nav Item - Tables -->
 <li class="nav-item">
     <a class="nav-link" href="tables.html">

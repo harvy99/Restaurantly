@@ -1,0 +1,97 @@
+{ 
+    "tittle":"29:11 Diners Admin - Admin Account",
+    "fields":[
+        {
+            "name": "id",
+            "label": "ID",
+            "property": {
+                "dataType": "int",
+                "addable": false,
+                "editable": false,
+                "visible": true  
+            } 
+        },
+        {
+            "name": "username",
+            "label": "Username",
+            "property": {
+                "dataType": "varchar",
+                "addable": true,
+                "editable": true,
+                "visible": true  
+            } 
+        } ,
+        {
+            "name": "password",
+            "label": "Password",
+            "property": {
+                "dataType": "password",
+                "addable": true,
+                "editable": true,
+                "visible": true  
+            } 
+        } ,
+        {
+            "name": "first_name",
+            "label": "First name",
+            "property": {
+                "dataType": "varchar",
+                "addable": true,
+                "editable": true,
+                "visible": true  
+            } 
+        } ,
+        {
+            "name": "last_name",
+            "label": "Last name",
+            "property": {
+                "dataType": "varchar",
+                "addable": true,
+                "editable": true,
+                "visible": true  
+            } 
+        }  ,
+        {
+            "name": "email",
+            "label": "Email",
+            "property": {
+                "dataType": "email",
+                "addable": true,
+                "editable": true,
+                "visible": true  
+            } 
+        } ,
+        {
+            "name": "admin_type_id",
+            "label": "Admin Type",
+            "property": {
+                "dataType": "foreign",
+                "foreignQuery":{
+                    "query":"SELECT * FROM `admin_type`",
+                    "field":"admin_type" 
+                },
+                "addable": true,
+                "editable": true,
+                "visible": true  
+            } 
+        }  ,
+        {
+            "name": "active",
+            "label": "Status",
+            "property": {
+                "dataType": "boolean",
+                "booleanValues":{
+                    "true":"Active",
+                    "false":"Inactive" 
+                },
+                "addable": true,
+                "editable": true,
+                "visible": true  
+            } 
+        }  
+    ],
+    "tableName":"admin_accounts",
+    "addLabel":"Add New Admin",
+    "displayFieldForDelete":"username",
+    "getQuery":"SELECT username, password, first_name, last_name, email, admin_type, active, a.id as id, a.admin_type_id FROM `admin_accounts` a INNER JOIN admin_type t on a.admin_type_id = t.id"
+}
