@@ -423,11 +423,11 @@
 
             $json_file = '<?php echo  $json_file?>';
             
-            $load_page = "actions/admin_account/get.php" ;
-            $add_data = "actions/admin_account/add.php" ;
-            $delete_data = "actions/admin_account/delete.php" ;
-            $import_data = "actions/admin_account/import.php" ; 
-            $update_data = "actions/admin_account/update.php" ;
+            $load_page = "<?php echo  $json['loadPage']?>" ;
+            $add_data = "<?php echo  $json['addData']?>" ;
+            $delete_data = "<?php echo  $json['deleteData']?>" ;
+            $import_data = "<?php echo  $json['importData']?>" ; 
+            $update_data = "<?php echo  $json['updateData']?>" ;
 
             $( "#dataTable" ).load( $load_page);
  

@@ -68,6 +68,7 @@
                 "dataType": "foreign",
                 "foreignQuery":{
                     "query":"SELECT * FROM `admin_type`",
+                    "importQuery":"SELECT * FROM `admin_type` where `<field>` = '<value>'",
                     "field":"admin_type" 
                 },
                 "addable": true,
@@ -90,8 +91,13 @@
             } 
         }  
     ],
+    "loadPage":"actions/type1/get.php",
+    "addData":"actions/type1/add.php",
+    "deleteData":"actions/type1/delete.php",
+    "importData":"actions/type1/import.php",
+    "updateData":"actions/type1/update.php",
     "tableName":"admin_accounts",
     "addLabel":"Add New Admin",
     "displayFieldForDelete":"username",
-    "getQuery":"SELECT username, password, first_name, last_name, email, admin_type, active, a.id as id, a.admin_type_id FROM `admin_accounts` a INNER JOIN admin_type t on a.admin_type_id = t.id"
-}
+    "getQuery":"SELECT username, password, first_name, last_name, email, admin_type, active, a.id as id, a.admin_type_id FROM `admin_accounts` a INNER JOIN admin_type t on a.admin_type_id = t.id ORDER BY `admin_accounts`.`id` ASC"
+} 
